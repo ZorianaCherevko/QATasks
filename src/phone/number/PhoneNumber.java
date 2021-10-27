@@ -4,32 +4,12 @@ import java.util.Scanner;
 
 public class PhoneNumber {
 
-    static int sumOfAllDigits(int phoneNumber) {
+    static int sum(int phoneNumber) {
         int sum = 0;
         while (phoneNumber > 0) {
             int digit = phoneNumber % 10;
-            sum = sum + digit;
+            sum += digit;
             phoneNumber = phoneNumber / 10;
-        }
-        return sum;
-    }
-
-    static int sumOfTwoDigits(int sumOfAllDigits) {
-        int sum = 0;
-        while (sumOfAllDigits > 0) {
-            int digit = sumOfAllDigits % 10;
-            sum = sum + digit;
-            sumOfAllDigits = sumOfAllDigits / 10;
-        }
-        return sum;
-    }
-
-    static int sumUntilOneDigit(int sumOfTwoDigits) {
-        int sum = 0;
-        while (sumOfTwoDigits > 0) {
-            int digit = sumOfTwoDigits % 10;
-            sum = sum + digit;
-            sumOfTwoDigits = sumOfTwoDigits / 10;
         }
         return sum;
     }
@@ -45,51 +25,39 @@ public class PhoneNumber {
 
     }
 
-    public static boolean isValid(String userInput)
-    {
-        if (userInput.length() >= 11 && userInput.length() <= 13)
-        {
-            if(userInput.startsWith("+380") || userInput.startsWith("00380")
-                    || userInput.startsWith("093") || userInput.startsWith("067"))
-            {
-                return  true;
+    public static boolean isValid(String input) {
+        do {
+
+            if (input.startsWith("+380") || input.startsWith("00380")
+                    || input.startsWith("093") || input.startsWith("067")) {
+                return true;
+            } else {
+                return false;
             }
-            else{
-                return  false;
-            }
-        }
-        try
-        {
-            int i = Integer.parseInt(userInput);
-        }
-        catch(NumberFormatException e)
-        {
-            return false;
-        }
-        return true;
+        } while (input.length()>=10 && input.length()<=13 );
     }
 
 
     public static void main(String[] args) {
         System.out.println("Please enter the phone number:");
         Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
+        String input = scanner.nextLine();
 
-        while (!isValid(userInput)) {
+        while (!isValid(input)) {
             System.out.print("Phone number is incorrect. Please enter the phone number: ");
-            userInput = scanner.next();
+            input = scanner.nextLine();
         }
 
-        int phoneNumber = Integer.parseInt(userInput);
-        int sumOfAllDigits = sumOfAllDigits(phoneNumber);
-        int sumOfTwoDigits = sumOfTwoDigits(sumOfAllDigits);
+        int phoneNumber = Integer.parseInt(input);
+        int sumOfAllDigits = sum(phoneNumber);
+        int sumOfTwoDigits = sum(sumOfAllDigits);
 
         System.out.println("1st round of calculation: " + sumOfAllDigits);
         System.out.println("2st round of calculation: " + sumOfTwoDigits);
 
         int sumUntilOneDigit;
         if (sumOfTwoDigits > 10) {
-            sumUntilOneDigit = sumUntilOneDigit(sumOfTwoDigits);
+            sumUntilOneDigit = sum(sumOfTwoDigits);
             System.out.println("3rd round of calculation: " + sumUntilOneDigit);
         } else {
             sumUntilOneDigit = sumOfTwoDigits;
