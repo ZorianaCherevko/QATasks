@@ -16,6 +16,8 @@ public class DuplicateElements {
         ArrayList<Integer> list = new ArrayList<Integer>();
         Collections.addAll(list, 11, 2, 23, 2, 4, 15, 15);
 
+
+
         System.out.println("ArrayList with duplicates: " + list);
 
         ArrayList<Integer> newList = removeDuplicateElements(list);

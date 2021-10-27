@@ -20,7 +20,7 @@ public class ArrayListOperations {
         int min = Collections.min(list);
         int max = Collections.max(list);
         double sum = 0;
-        for (double x: list)
+        for (int x: list)
         {
             sum += x;
         }
