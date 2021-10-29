@@ -61,7 +61,7 @@ public class tests {
                 .contentType(ContentType.JSON).log().all()
                 .body(data)
                 .when()
-                .put("/v2/pet")
+                .put("/v2/pet/356")
                 .then().log().all()
                 .assertThat().statusCode(200)
                 .body("status", equalTo("sold"));
