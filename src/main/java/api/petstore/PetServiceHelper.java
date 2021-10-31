@@ -1,4 +1,4 @@
-package api;
+package api.petstore;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -70,13 +70,13 @@ public class PetServiceHelper {
         pet.setStatus(Status.sold);
         pet.setCategory(category);
         pet.setTags(Arrays.asList(tag));
-        pet.setPhotoUrls(Arrays.asList("https://images.dog.ceo//breeds//labrador//n02099712_5008.jpg"));
+        pet.setPhotoUrls(Arrays.asList("https://highlandcanine.com/wp-content/uploads/2020/12/iStock-926735822.jpg"));
 
         Response response = RestAssured
                 .given()
                 .spec(getCommonRequestSpec())
                 .when()
-                .body(pet).log().all()
+                .body(pet)
                 .put(Endpoints.UPDATE_A_PET)
                 .andReturn();
         assertEquals(response.statusCode(), 200);
@@ -84,11 +84,13 @@ public class PetServiceHelper {
 
     }
 
-    public  Response getPet(){
+    public  Response getPet(Integer id){
 
         Response response = RestAssured
-                .given().log().all()
+                .given()
                 .spec(getCommonRequestSpec())
+                .pathParam("id", id)
+                .when()
                 .get(Endpoints.GET_A_PET)
                 .andReturn();
         assertEquals(response.statusCode(), 200);
@@ -102,7 +104,7 @@ public class PetServiceHelper {
                 .given()
                 .spec(getCommonRequestSpec())
                 .pathParam("id", id)
-                .when().log().all()
+                .when()
                 .delete(Endpoints.DELETE_A_PET)
                 .andReturn();
         assertEquals(response.statusCode(), 200);

@@ -1,4 +1,4 @@
-package api;
+package api.petstore;
 public class Category {
 
     private Integer id;
