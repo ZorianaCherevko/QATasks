@@ -3,8 +3,10 @@ package swagger.api;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import netscape.javascript.JSObject;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 
 
 import static io.restassured.RestAssured.given;
@@ -53,12 +55,13 @@ public class tests {
                 .body("id", equalTo(356));
     }
 
+
     @Test
     public void updatePetDataStatus(){
         String data = "{\"id\": \"356\",\"name\": \"Jake\",\"status\": \"sold\"}";
         given()
                 .accept(ContentType.JSON)
-                .contentType(ContentType.JSON).log().all()
+                .contentType(ContentType.JSON)
                 .body(data)
                 .when()
                 .put("/v2/pet/356")
