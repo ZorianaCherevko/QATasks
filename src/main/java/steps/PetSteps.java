@@ -6,12 +6,12 @@ import builders.Status;
 import builders.Tag;
 import enpoints.Endpoints;
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+import lombok.SneakyThrows;
+import utils.ApiUtils;
 import utils.BuilderUtil;
+
 
 import static org.testng.Assert.assertEquals;
 
@@ -24,22 +24,17 @@ public class PetSteps {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
 
-    public RequestSpecification getCommonRequestSpec(){
-        RequestSpecBuilder builder = new RequestSpecBuilder();
-        builder.setAccept(ContentType.JSON);
-        builder.setContentType(ContentType.JSON);
-        RequestSpecification requestSpec = builder.build();
-        return requestSpec;
-    }
-
+    @SneakyThrows
     public Response createPetWithBuilder(Integer id, String name, String photoUrl,
                                          Category category, List<Tag> tags, Status status){
 
         Pet pet = builderUtil.buildFullDataPet(id, name, photoUrl, category,tags, status);
 
-        return getCommonRequestSpec().post(Endpoints.CREATE_A_PET, null, objectMapper.writeValueAsString(pet),null,null);
+        return ApiUtils.post(Endpoints.CREATE_A_PET, objectMapper.writeValueAsString(pet));
 
     }
+
+
 
 
 
