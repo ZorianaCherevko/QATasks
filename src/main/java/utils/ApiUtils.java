@@ -23,7 +23,7 @@ public class ApiUtils {
         requestSpec.accept(ContentType.JSON);
         requestSpec.body(body);
 
-        Response resp = requestSpec.post(endpoint);
+        Response resp = requestSpec.put(endpoint);
         return resp;
     }
 
@@ -32,7 +32,7 @@ public class ApiUtils {
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
 
-        Response resp = requestSpec.post(endpoint);
+        Response resp = requestSpec.get(endpoint);
         return resp;
     }
 
@@ -41,7 +41,7 @@ public class ApiUtils {
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
 
-        Response resp = requestSpec.post(endpoint);
+        Response resp = requestSpec.delete(endpoint);
         return resp;
     }
 

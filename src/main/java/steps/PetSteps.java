@@ -34,53 +34,18 @@ public class PetSteps {
 
     }
 
+    @SneakyThrows
+    public Response updatePetWithBuilder(Integer id, String name, String photoUrl,
+                                         Category category, List<Tag> tags, Status updatedStatus){
 
+        Pet pet = builderUtil.buildFullDataPet(id, name, photoUrl, category,tags, updatedStatus);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public  Response updatePet(){
-
-        Category category = new Category();
-        category.setId(345);
-        category.setName("Dog");
-
-        Tag tag = new Tag();
-        tag.setId(345);
-        tag.setName("Sporting");
-
-        Pet pet = new Pet();
-        pet.setName("Rocky");
-        pet.setStatus(Status.sold);
-        pet.setCategory(category);
-        pet.setTags(Arrays.asList(tag));
-        pet.setPhotoUrls(Arrays.asList("https://highlandcanine.com/wp-content/uploads/2020/12/iStock-926735822.jpg"));
-
-        Response response = RestAssured
-                .given()
-                .spec(getCommonRequestSpec())
-                .when()
-                .body(pet)
-                .put(Endpoints.UPDATE_A_PET)
-                .andReturn();
-        assertEquals(response.statusCode(), 200);
-        return  response;
+        return ApiUtils.put(Endpoints.CREATE_A_PET, objectMapper.writeValueAsString(pet));
 
     }
+
+
+
 
     public  Response getPet(Integer id){
 
