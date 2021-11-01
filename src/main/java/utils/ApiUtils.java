@@ -33,6 +33,7 @@ public class ApiUtils {
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
 
+
         Response resp = requestSpec.get(endpoint);
         return resp;
     }
