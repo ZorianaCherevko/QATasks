@@ -8,19 +8,18 @@ import enpoints.Endpoints;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
-import io.restassured.mapper.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import utils.BuilderUtil;
-import api.utils.ApiServises;
 
 import static org.testng.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class PetSteps {
 
-    private final ApiServises apiService = new ApiServises();
     private final BuilderUtil builderUtil = new BuilderUtil();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -33,19 +32,12 @@ public class PetSteps {
         return requestSpec;
     }
 
-    public Response createPetWithBuilder(){
+    public Response createPetWithBuilder(Integer id, String name, String photoUrl,
+                                         Category category, List<Tag> tags, Status status){
 
-        CredentialSystemPet credentialSystemPet = builderUtil.buildCredentialSystemPet(id,name);
+        Pet pet = builderUtil.buildFullDataPet(id, name, photoUrl, category,tags, status);
 
-        Response response = RestAssured
-                .given()
-                .spec(getCommonRequestSpec())
-                .body(pet)
-                .when()
-                .post(Endpoints.CREATE_A_PET)
-                .andReturn();
-        assertEquals(response.statusCode(), 200);
-        return  response;
+        return getCommonRequestSpec().post(Endpoints.CREATE_A_PET, null, objectMapper.writeValueAsString(pet),null,null);
 
     }
 

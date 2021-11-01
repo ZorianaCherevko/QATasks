@@ -1,6 +1,7 @@
 package builders;
 
-import groovy.transform.builder.Builder;
+
+import lombok.Builder;
 import lombok.Data;
 
 @Data

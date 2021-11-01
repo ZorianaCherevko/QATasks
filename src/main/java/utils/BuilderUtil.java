@@ -11,15 +11,15 @@ import java.util.List;
 
 public class BuilderUtil {
 
-    public Pet buildFullDataPet(Integer id, String name, List<String> photoUrls,
-                                Category category,List<Tag> tags, Status status ){
+    public  Pet buildFullDataPet(Integer id, String name, String photoUrl,
+                                Category category, List<Tag> tags, Status status ){
         return Pet.builder()
                 .id(id)
                 .name(name)
-                .photoUrls(Arrays.asList(photoUrls))
+                .photoUrl(photoUrl)
                 .category(Category.builder().id(id).name(name).build())
                 .tags(Arrays.asList(Tag.builder().id(id).name(name).build()))
-                .status(Status.available)
+                .status(status)
                 .build();
     }
 }
