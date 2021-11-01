@@ -1,21 +1,29 @@
-package api.petstore;
+package steps;
 
+import builders.Category;
+import builders.Pet;
+import builders.Status;
+import builders.Tag;
+import enpoints.Endpoints;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.mapper.ObjectMapper;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import utils.BuilderUtil;
+import api.utils.ApiServises;
+
 import static org.testng.Assert.assertEquals;
 
 import java.util.Arrays;
 
-public class PetServiceHelper {
+public class PetSteps {
 
-    private final String BASE_URL = "https://petstore.swagger.io";
+    private final ApiServises apiService = new ApiServises();
+    private final BuilderUtil builderUtil = new BuilderUtil();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public PetServiceHelper() {
-        RestAssured.baseURI = BASE_URL;
-    }
 
     public RequestSpecification getCommonRequestSpec(){
         RequestSpecBuilder builder = new RequestSpecBuilder();
@@ -24,6 +32,43 @@ public class PetServiceHelper {
         RequestSpecification requestSpec = builder.build();
         return requestSpec;
     }
+
+    public Response createPetWithBuilder(){
+
+        CredentialSystemPet credentialSystemPet = builderUtil.buildCredentialSystemPet(id,name);
+
+        Response response = RestAssured
+                .given()
+                .spec(getCommonRequestSpec())
+                .body(pet)
+                .when()
+                .post(Endpoints.CREATE_A_PET)
+                .andReturn();
+        assertEquals(response.statusCode(), 200);
+        return  response;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public Response createPet(){
 

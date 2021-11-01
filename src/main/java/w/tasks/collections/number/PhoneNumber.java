@@ -1,4 +1,4 @@
-package phone.number;
+package w.tasks.collections.number;
 
 import java.util.Scanner;
 

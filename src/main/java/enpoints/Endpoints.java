@@ -1,4 +1,4 @@
-package api.petstore;
+package enpoints;
 
 public class Endpoints {
 

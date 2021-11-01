@@ -1,4 +1,4 @@
-package collections;
+package w.tasks.collections;
 import java.util.*;
 
 public class DuplicateElements {
