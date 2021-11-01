@@ -1,19 +1,9 @@
-
-import builders.Category;
-import builders.Status;
-import builders.Tag;
-import enpoints.Endpoints;
 import jdk.jfr.Description;
 import steps.PetSteps;
 import org.testng.annotations.Test;
 import test.Cred.TestCred;
 
-import java.util.List;
-
 import static org.testng.Assert.assertEquals;
-
-import static org.hamcrest.Matchers.equalTo;
-
 public class PetTests extends BaseTests{
 
 

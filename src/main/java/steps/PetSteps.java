@@ -1,23 +1,13 @@
 package steps;
 
-import builders.Category;
 import builders.Pet;
 import builders.Status;
-import builders.Tag;
 import enpoints.Endpoints;
-import io.restassured.RestAssured;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import lombok.SneakyThrows;
-import test.Cred.TestCred;
 import utils.ApiUtils;
 import utils.BuilderUtil;
-
-
-import static org.testng.Assert.assertEquals;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class PetSteps {
 

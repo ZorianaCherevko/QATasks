@@ -1,12 +1,5 @@
 package test.Cred;
-
-import builders.Category;
 import builders.Status;
-import builders.Tag;
-
-import java.util.Arrays;
-import java.util.List;
-
 public class TestCred {
 
     public static Integer PET_CATEGORY_ID = 2;
@@ -17,8 +10,6 @@ public class TestCred {
     public static Status PET_STATUS = Status.available;
     public static Integer PET_TAG_ID = 13;
     public static String PET_TAG_NAME = "Hound";
-
-
     public static String UPDATED_PET_TAG_NAME = "Sporting";
 
 
