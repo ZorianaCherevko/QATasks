@@ -13,13 +13,14 @@ import java.util.List;
 public class BuilderUtil {
 
     public  Pet buildFullDataPet(Integer id, String name, String photoUrl,
-                                Category category, List<Tag> tags, Status status ){
+                                Integer categoryId, String categoryName, Integer tagId,
+                                 String tagName, Status status ){
         return Pet.builder()
                 .id(id)
                 .name(name)
                 .photoUrl(photoUrl)
-                .category(buildCategory())
-                .tags(Arrays.asList(buildTags()))
+                .category(buildCategory(categoryId, categoryName))
+                .tags(List.of(buildTags(tagId, tagName)))
                 .status(status)
                 .build();
     }
