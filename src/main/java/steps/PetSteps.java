@@ -51,42 +51,6 @@ public class PetSteps {
 
 
 
-
-
-
-
-
-
-    public Response createPet(){
-
-        Category category = new Category();
-        category.setId(345);
-        category.setName("Dog");
-
-        Tag tag = new Tag();
-        tag.setId(345);
-        tag.setName("Hound");
-
-        Pet pet = new Pet();
-        pet.setId(345);
-        pet.setName("Rocky");
-        pet.setStatus(Status.available);
-        pet.setCategory(category);
-        pet.setTags(Arrays.asList(tag));
-        pet.setPhotoUrls(Arrays.asList("https://highlandcanine.com/wp-content/uploads/2020/12/iStock-926735822.jpg"));
-
-        Response response = RestAssured
-                .given()
-                .spec(getCommonRequestSpec())
-                .body(pet)
-                .when()
-                .post(Endpoints.CREATE_A_PET)
-                .andReturn();
-        assertEquals(response.statusCode(), 200);
-        return  response;
-
-    }
-
     public  Response updatePet(){
 
         Category category = new Category();
