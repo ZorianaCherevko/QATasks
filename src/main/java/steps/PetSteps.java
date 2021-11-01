@@ -9,6 +9,7 @@ import io.restassured.RestAssured;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import lombok.SneakyThrows;
+import test.Cred.TestCred;
 import utils.ApiUtils;
 import utils.BuilderUtil;
 
@@ -48,12 +49,12 @@ public class PetSteps {
 
     @SneakyThrows
     public Response getPet(Integer id){
-        return ApiUtils.get(Endpoints.GET_A_PET);
+        return ApiUtils.get(Endpoints.GET_A_PET, id);
     }
 
     @SneakyThrows
     public Response deletePet(Integer id){
-        return ApiUtils.get(Endpoints.DELETE_A_PET);
+        return ApiUtils.delete(Endpoints.DELETE_A_PET, id);
     }
 
 

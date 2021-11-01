@@ -28,20 +28,22 @@ public class ApiUtils {
         return resp;
     }
 
-    public static Response get(String endpoint){
+    public static Response get(String endpoint, Integer id){
         RequestSpecification requestSpec = RestAssured.given();
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
+        requestSpec.pathParam("id", id );
 
 
         Response resp = requestSpec.get(endpoint);
         return resp;
     }
 
-    public static Response delete(String endpoint){
+    public static Response delete(String endpoint, Integer id){
         RequestSpecification requestSpec = RestAssured.given();
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
+        requestSpec.pathParam("id", id );
 
         Response resp = requestSpec.delete(endpoint);
         return resp;
