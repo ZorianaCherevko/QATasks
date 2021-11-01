@@ -6,6 +6,7 @@ import enpoints.Endpoints;
 import jdk.jfr.Description;
 import steps.PetSteps;
 import org.testng.annotations.Test;
+import test.Cred.TestCred;
 
 import java.util.List;
 
@@ -22,11 +23,8 @@ public class PetTests extends BaseTests{
     @Test
     @Description("POST /v2/pet")
     public void checkCreatePet(){
-        assertEquals(petSteps.createPetWithBuilder(245, "Rocky",
-                "https://highlandcanine.com/wp-content/uploads/2020/12/iStock-926735822.jpg",
-                Category.builder().id(245).name("Dog").build(),
-               (List<Tag>) Tag.builder().id(245).name("Hound").build(),
-                Status.available).getStatusCode(),200);
+        assertEquals(petSteps.createPetWithBuilder(TestCred.PET_ID, TestCred.PET_NAME,TestCred.PET_PHOTO,
+                TestCred.PET_CATEGORY,TestCred.PET_TAGS,TestCred.PET_STATUS).getStatusCode(),200);
     }
 
 
@@ -52,19 +50,19 @@ public class PetTests extends BaseTests{
 
     @Test
     public void checkThatGetPetByIdReturns200(){
-        petSteps.getPet(PET_ID);
+        petSteps.getPet();
     }
 
     @Test
     public void checkThatDeletePetByIdReturns200(){
-        petSteps.deletePet(PET_ID);
+        petSteps.deletePet();
     }
 
     @Test
     public void checkThatPetCanBeCreatedUpdatedReturnedAndDeletedSuccessfully(){
         petSteps.createPet();
         petSteps.updatePet().then().body("status", equalTo("sold"));
-        petSteps.getPet(PET_ID);
-        petSteps.deletePet(PET_ID);
+        petSteps.getPet();
+        petSteps.deletePet();
     }
 }
