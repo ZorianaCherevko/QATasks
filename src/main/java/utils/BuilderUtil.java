@@ -4,6 +4,7 @@ import builders.Category;
 import builders.Pet;
 import builders.Status;
 import builders.Tag;
+import test.Cred.TestCred;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,9 +18,24 @@ public class BuilderUtil {
                 .id(id)
                 .name(name)
                 .photoUrl(photoUrl)
-                .category(Category.builder().id(id).name(name).build())
-                .tags(Arrays.asList(Tag.builder().id(id).name(name).build()))
+                .category(buildCategory())
+                .tags(Arrays.asList(buildTags()))
                 .status(status)
+                .build();
+    }
+
+
+    public  Category buildCategory(Integer categoryId, String categoryName ){
+        return Category.builder()
+                .id(categoryId)
+                .name(categoryName)
+                .build();
+    }
+
+    public  Tag buildTags(Integer tagId, String tagName ){
+        return Tag.builder()
+                .id(tagId)
+                .name(tagName)
                 .build();
     }
 }

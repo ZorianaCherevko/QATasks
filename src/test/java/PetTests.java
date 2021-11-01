@@ -50,7 +50,7 @@ public class PetTests extends BaseTests{
 
     @Test
     public void checkThatGetPetByIdReturns200(){
-        petSteps.getPet();
+        petSteps.getPet(456);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class PetTests extends BaseTests{
     public void checkThatPetCanBeCreatedUpdatedReturnedAndDeletedSuccessfully(){
         petSteps.createPet();
         petSteps.updatePet().then().body("status", equalTo("sold"));
-        petSteps.getPet();
+        petSteps.getPet(456);
         petSteps.deletePet();
     }
 }

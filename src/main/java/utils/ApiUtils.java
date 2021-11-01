@@ -7,6 +7,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class ApiUtils {
 
+
     public static Response post(String endpoint, Object body){
         RequestSpecification requestSpec = RestAssured.given();
         requestSpec.contentType(ContentType.JSON);

@@ -40,38 +40,17 @@ public class PetSteps {
 
         Pet pet = builderUtil.buildFullDataPet(id, name, photoUrl, category,tags, updatedStatus);
 
-        return ApiUtils.put(Endpoints.CREATE_A_PET, objectMapper.writeValueAsString(pet));
+        return ApiUtils.put(Endpoints.UPDATE_A_PET, objectMapper.writeValueAsString(pet));
+
+    }
+
+    @SneakyThrows
+    public Response getPet(Integer id){
+        return ApiUtils.get(Endpoints.GET_A_PET);
 
     }
 
 
 
 
-    public  Response getPet(Integer id){
-
-        Response response = RestAssured
-                .given()
-                .spec(getCommonRequestSpec())
-                .pathParam("id", id)
-                .when()
-                .get(Endpoints.GET_A_PET)
-                .andReturn();
-        assertEquals(response.statusCode(), 200);
-        return  response;
-
-    }
-
-    public Response deletePet(Integer id){
-
-        Response response = RestAssured
-                .given()
-                .spec(getCommonRequestSpec())
-                .pathParam("id", id)
-                .when()
-                .delete(Endpoints.DELETE_A_PET)
-                .andReturn();
-        assertEquals(response.statusCode(), 200);
-        return  response;
-
-    }
 }
