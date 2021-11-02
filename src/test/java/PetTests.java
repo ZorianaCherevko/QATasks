@@ -1,4 +1,8 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.response.Response;
 import jdk.jfr.Description;
+import lombok.SneakyThrows;
+import steps.GenSteps;
 import steps.PetSteps;
 import org.testng.annotations.Test;
 
@@ -10,6 +14,9 @@ public class PetTests extends BaseTests{
 
 
     private final PetSteps petSteps = new PetSteps();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final GenSteps genSteps = new GenSteps();
+
 
 
     @Test
@@ -40,21 +47,26 @@ public class PetTests extends BaseTests{
         assertEquals(petSteps.deleteInfoByPetId(PET_ID).getStatusCode(),200);
     }
 
+
+    @SneakyThrows
     @Test
     public void checkTheMainFunctionalityOfApiRequests(){
-        petSteps.addNewPetToStore(PET_ID, PET_NAME,PET_PHOTO,
+        Response r =petSteps.addNewPetToStore(PET_ID, PET_NAME,PET_PHOTO,
                 PET_CATEGORY_ID, PET_CATEGORY_NAME,PET_TAG_ID,
-                PET_TAG_NAME,PET_STATUS)
-                .then()
-                .assertThat()
-                .body("id", equalTo(PET_ID))
-                .body("name", equalTo(PET_NAME))
-                .body("category.id", equalTo(PET_CATEGORY_ID))
-                .body("category.name", equalTo(PET_CATEGORY_NAME))
-                .body("photoUrls[0]", equalTo(PET_PHOTO))
-                .body("tags[0].id", equalTo(PET_TAG_ID))
-                .body("tags[0].name", equalTo(PET_TAG_NAME))
-                .body("status", equalToCompressingWhiteSpace(PET_STATUS.toString()));
+                PET_TAG_NAME,PET_STATUS);
+        assertEquals(genSteps.getIdFromBody(r),PET_ID.toString());
+
+
+                //.then()
+               // .assertThat()
+               // .body("id", equalTo(PET_ID))
+               // .body("name", equalTo(PET_NAME))
+               // .body("category.id", equalTo(PET_CATEGORY_ID))
+               // .body("category.name", equalTo(PET_CATEGORY_NAME))
+              //  .body("photoUrls[0]", equalTo(PET_PHOTO))
+               // .body("tags[0].id", equalTo(PET_TAG_ID))
+               // .body("tags[0].name", equalTo(PET_TAG_NAME))
+               // .body("status", equalToCompressingWhiteSpace(PET_STATUS.toString()));
 
 
         petSteps.updatePetInfo(PET_ID, PET_NAME,PET_PHOTO,
