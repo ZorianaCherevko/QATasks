@@ -9,8 +9,8 @@ import java.util.List;
 
 public class BuilderUtil {
 
-    public  Pet buildFullDataPet(Integer id, String name, String photoUrls,
-                                Integer categoryId, String categoryName, Integer tagId,
+    public  Pet buildFullDataPet(int id, String name, String photoUrls,
+                                int categoryId, String categoryName, int tagId,
                                  String tagName, Status status ){
         return Pet.builder()
                 .id(id)
@@ -23,14 +23,14 @@ public class BuilderUtil {
     }
 
 
-    public  Category buildCategory(Integer categoryId, String categoryName ){
+    public  Category buildCategory(int categoryId, String categoryName ){
         return Category.builder()
                 .id(categoryId)
                 .name(categoryName)
                 .build();
     }
 
-    public  Tag buildTags(Integer tagId, String tagName ){
+    public  Tag buildTags(int tagId, String tagName ){
         return Tag.builder()
                 .id(tagId)
                 .name(tagName)

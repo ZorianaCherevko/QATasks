@@ -10,7 +10,7 @@ import java.util.List;
 public class Pet {
 
     private Category category;
-    private Integer id;
+    private int id;
     private String name;
     private List<String> photoUrls;
     private Status status;
