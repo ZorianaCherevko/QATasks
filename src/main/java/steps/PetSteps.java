@@ -2,8 +2,8 @@ package steps;
 
 import builders.Pet;
 import builders.Status;
-import enpoints.Endpoints;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import enpoints.Endpoints;
 import io.restassured.response.Response;
 import lombok.SneakyThrows;
 import utils.ApiUtils;
@@ -14,9 +14,8 @@ public class PetSteps {
     private final BuilderUtil builderUtil = new BuilderUtil();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-
     @SneakyThrows
-    public Response createPet(Integer id, String name, String photoUrl,
+    public Response createPetWithValidData(Integer id, String name, String photoUrl,
                                          Integer categoryId, String categoryName, Integer tagId,
                                          String tagName, Status status ){
 
@@ -27,7 +26,7 @@ public class PetSteps {
     }
 
     @SneakyThrows
-    public Response updatePet(Integer id, String name, String photoUrl,
+    public Response updatePetTagNameWithValidDaa(Integer id, String name, String photoUrl,
                              Integer categoryId, String categoryName, Integer tagId,
                              String tagName, Status updatedStatus ){
 
@@ -38,12 +37,12 @@ public class PetSteps {
     }
 
     @SneakyThrows
-    public Response getPet(Integer id){
+    public Response getPetById(Integer id){
         return ApiUtils.get(Endpoints.GET_A_PET, id);
     }
 
     @SneakyThrows
-    public Response deletePet(Integer id){
+    public Response deletePetById(Integer id){
         return ApiUtils.delete(Endpoints.DELETE_A_PET, id);
     }
 

@@ -3,6 +3,7 @@ import steps.PetSteps;
 import org.testng.annotations.Test;
 import test.Cred.TestCred;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.testng.Assert.assertEquals;
 public class PetTests extends BaseTests{
 
@@ -13,7 +14,7 @@ public class PetTests extends BaseTests{
     @Test
     @Description("POST /v2/pet")
     public void checkThatCreatePetWithValidDataReturns200(){
-        assertEquals(petSteps.createPet(TestCred.PET_ID, TestCred.PET_NAME,TestCred.PET_PHOTO,
+        assertEquals(petSteps.createPetWithValidData(TestCred.PET_ID, TestCred.PET_NAME,TestCred.PET_PHOTO,
                 TestCred.PET_CATEGORY_ID, TestCred.PET_CATEGORY_NAME,TestCred.PET_TAG_ID,
                 TestCred.PET_TAG_NAME,TestCred.PET_STATUS).getStatusCode(),200);
     }
@@ -21,31 +22,39 @@ public class PetTests extends BaseTests{
     @Test
     @Description("PUT /v2/pet")
     public void checkThatUpdatePetReturns200(){
-        assertEquals(petSteps.updatePet(TestCred.PET_ID, TestCred.PET_NAME,TestCred.PET_PHOTO,
+        assertEquals(petSteps.updatePetTagNameWithValidDaa(TestCred.PET_ID, TestCred.PET_NAME,TestCred.PET_PHOTO,
                 TestCred.PET_CATEGORY_ID, TestCred.PET_CATEGORY_NAME,TestCred.PET_TAG_ID,
-                TestCred.UPDATED_PET_TAG_NAME,TestCred.PET_STATUS).getStatusCode(),200);
+                TestCred.PET_TAG_NAME,TestCred.UPDATED_PET_STATUS).getStatusCode(),200);
     }
 
     @Test
     @Description("GET /v2/pet/{id}")
     public void checkThatGetPetByIdReturns200(){
-        assertEquals(petSteps.getPet(TestCred.PET_ID).getStatusCode(),200);
+        assertEquals(petSteps.getPetById(TestCred.PET_ID).getStatusCode(),200);
     }
 
     @Test
-    @Description("GET /v2/pet/{id}")
+    @Description("DELETE /v2/pet/{id}")
     public void checkThatDeletePetByIdReturns200(){
-        assertEquals(petSteps.deletePet(TestCred.PET_ID).getStatusCode(),200);
+        assertEquals(petSteps.deletePetById(TestCred.PET_ID).getStatusCode(),200);
     }
-
-
 
 
     @Test
-    public void checkThatPetCanBeCreatedUpdatedReturnedAndDeletedSuccessfully(){
-        //petSteps.createPet();
-        //petSteps.updatePet().then().body("status", equalTo("sold"));
-        //petSteps.getPet(456);
-        //petSteps.deletePet();
+    public void checkTheMainFunctionalityOfApiRequests(){
+        petSteps.createPetWithValidData(TestCred.PET_ID, TestCred.PET_NAME,TestCred.PET_PHOTO,
+                TestCred.PET_CATEGORY_ID, TestCred.PET_CATEGORY_NAME,TestCred.PET_TAG_ID,
+                TestCred.PET_TAG_NAME,TestCred.PET_STATUS).then().assertThat().statusCode(200);
+
+        petSteps.updatePetTagNameWithValidDaa(TestCred.PET_ID, TestCred.PET_NAME,TestCred.PET_PHOTO,
+                TestCred.PET_CATEGORY_ID, TestCred.PET_CATEGORY_NAME,TestCred.PET_TAG_ID,
+                TestCred.PET_TAG_NAME,TestCred.UPDATED_PET_STATUS).then().assertThat().body("status", equalTo("sold"));
+
+        petSteps.getPetById(TestCred.PET_ID).then().log().body();
+
+        assertEquals(petSteps.deletePetById(TestCred.PET_ID).getStatusCode(),200);
+
     }
+
+
 }

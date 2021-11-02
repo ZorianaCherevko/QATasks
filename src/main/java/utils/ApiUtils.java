@@ -12,7 +12,7 @@ public class ApiUtils {
         RequestSpecification requestSpec = RestAssured.given();
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
-        requestSpec.body(body).log().all();
+        requestSpec.body(body);
 
         Response resp = requestSpec.post(endpoint);
         return resp;
