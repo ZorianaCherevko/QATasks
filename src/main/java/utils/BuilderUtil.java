@@ -9,13 +9,13 @@ import java.util.List;
 
 public class BuilderUtil {
 
-    public  Pet buildFullDataPet(Integer id, String name, String photoUrl,
+    public  Pet buildFullDataPet(Integer id, String name, String photoUrls,
                                 Integer categoryId, String categoryName, Integer tagId,
                                  String tagName, Status status ){
         return Pet.builder()
                 .id(id)
                 .name(name)
-                .photoUrl(photoUrl)
+                .photoUrls(List.of(photoUrls))
                 .category(buildCategory(categoryId, categoryName))
                 .tags(List.of(buildTags(tagId, tagName)))
                 .status(status)
@@ -36,4 +36,6 @@ public class BuilderUtil {
                 .name(tagName)
                 .build();
     }
+
+
 }
