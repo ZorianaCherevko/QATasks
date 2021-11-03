@@ -10,6 +10,7 @@ import page.object.pages.Header;
 import page.object.steps.AuthenticationPageSteps;
 import page.object.steps.CreateAccountPageSteps;
 import page.object.steps.HeaderSteps;
+import page.object.steps.PersonalAccountPageSteps;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 
@@ -50,6 +51,10 @@ public class BaseTest {
 
     public CreateAccountPageSteps getCreateAccountPageSteps(){
         return new CreateAccountPageSteps(getDriver());
+    }
+
+    public PersonalAccountPageSteps getPersonalAccountPageSteps(){
+        return new PersonalAccountPageSteps(getDriver());
     }
 
 }

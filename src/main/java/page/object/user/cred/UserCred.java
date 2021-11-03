@@ -2,7 +2,7 @@ package page.object.user.cred;
 
 public class UserCred {
 
-    public static String EMAIL = "email@.com";
+    public static String EMAIL = "email6789@gmail.com";
     public static String FIRSTNAME = "Firstname";
     public static String LASTNAME = "Lastname";
     public static String PASSWORD = "password";

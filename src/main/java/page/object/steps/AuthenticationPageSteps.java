@@ -19,5 +19,9 @@ public class AuthenticationPageSteps extends  BasePageSteps{
         driver.findElement(By.xpath(CREATE_ACCOUNT_BUTTON)).click();
     }
 
+    public By getInputEmail(){
+        return By.xpath(EMAIL_INPUT);
+    }
+
 
 }
