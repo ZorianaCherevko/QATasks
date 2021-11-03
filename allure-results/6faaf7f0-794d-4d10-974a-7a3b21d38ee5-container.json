@@ -1,0 +1,1 @@
+{"uuid":"6faaf7f0-794d-4d10-974a-7a3b21d38ee5","name":"CollectionsTasks","children":["e62d0a8e-0290-4fb5-8495-356f101920f0"],"befores":[{"name":"profileSetUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1635949472742,"stop":1635949473292}],"afters":[],"start":1635949472706,"stop":1635949491209}
