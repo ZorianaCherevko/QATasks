@@ -36,8 +36,8 @@ public class CreateAccountPageSteps extends BasePageSteps {
         driver.findElement(By.xpath(CITY_INPUT)).sendKeys(keyword);
     }
 
-    public void inputPostCode(final String keyword){
-        driver.findElement(By.xpath(POST_CODE_INPUT)).sendKeys(keyword);
+    public void inputPostCode(final int keyword){
+        driver.findElement(By.xpath(POST_CODE_INPUT)).sendKeys(String.valueOf(keyword));
     }
 
     public void chooseState(){
@@ -51,8 +51,8 @@ public class CreateAccountPageSteps extends BasePageSteps {
 
     }
 
-    public void inputPhoneNumber(final String keyword){
-        driver.findElement(By.xpath(PHONE_INPUT)).sendKeys(keyword);
+    public void inputPhoneNumber(final int keyword){
+        driver.findElement(By.xpath(PHONE_INPUT)).sendKeys(String.valueOf(keyword));
     }
 
 
