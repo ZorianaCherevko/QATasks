@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 public class RegisterTests extends  BaseTest {
 
     @Test
-    public void checkThatRegisterationWithValidCredentialsIsSuccessful(){
+    public void checkThatRegistrationWithValidCredentialsIsSuccessful(){
         getHeaderSteps().clickSignInButton();
         getAuthenticationPageSteps().waitVisibilityOfElement(20, getAuthenticationPageSteps().getInputEmail());
         getAuthenticationPageSteps().inputEmail(EMAIL);
