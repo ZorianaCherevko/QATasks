@@ -51,6 +51,10 @@ public class CreateAccountPageSteps extends BasePageSteps {
 
     }
 
+    public void inputPhoneNumber(final String keyword){
+        driver.findElement(By.xpath(PHONE_INPUT)).sendKeys(keyword);
+    }
+
 
 
 }

@@ -33,9 +33,6 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown(){
-        driver.close();
-    }
 
     public WebDriver getDriver(){
         return driver;

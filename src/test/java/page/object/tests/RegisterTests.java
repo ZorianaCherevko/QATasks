@@ -22,6 +22,7 @@ public class RegisterTests extends  BaseTest {
         getCreateAccountPageSteps().inputAddress(ADDRESS);
         getCreateAccountPageSteps().inputCity(CITY);
         getCreateAccountPageSteps().inputPostCode(POST_CODE);
+        getCreateAccountPageSteps().inputPhoneNumber(PHONE);
         getCreateAccountPageSteps().chooseState();
         getCreateAccountPageSteps().clickRegisterButton();
         getPersonalAccountPageSteps().waitForLoadPAgeComplete(30);
