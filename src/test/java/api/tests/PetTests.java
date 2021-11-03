@@ -1,4 +1,6 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
+package api.tests;
+
+import api.tests.BaseTests;
 import io.restassured.response.Response;
 import jdk.jfr.Description;
 import lombok.SneakyThrows;
@@ -9,7 +11,7 @@ import org.testng.annotations.Test;
 import static test.Cred.TestCred.*;
 
 import static org.testng.Assert.assertEquals;
-public class PetTests extends BaseTests{
+public class PetTests extends BaseTests {
 
 
     private final PetSteps petSteps = new PetSteps();
