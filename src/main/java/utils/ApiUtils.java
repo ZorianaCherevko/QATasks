@@ -12,7 +12,7 @@ public class ApiUtils {
         RequestSpecification requestSpec = RestAssured.given();
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
-        requestSpec.body(body);
+        requestSpec.body(body).log().all();
 
         Response resp = requestSpec.post(endpoint);
         return resp;
@@ -22,7 +22,7 @@ public class ApiUtils {
         RequestSpecification requestSpec = RestAssured.given();
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
-        requestSpec.body(body);
+        requestSpec.body(body).log().all();
 
         Response resp = requestSpec.put(endpoint);
         return resp;
@@ -33,6 +33,7 @@ public class ApiUtils {
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
         requestSpec.pathParam("id", id );
+        requestSpec.log().all();
 
 
         Response resp = requestSpec.get(endpoint);
@@ -44,6 +45,7 @@ public class ApiUtils {
         requestSpec.contentType(ContentType.JSON);
         requestSpec.accept(ContentType.JSON);
         requestSpec.pathParam("id", id );
+        requestSpec.log().all();
 
         Response resp = requestSpec.delete(endpoint);
         return resp;
