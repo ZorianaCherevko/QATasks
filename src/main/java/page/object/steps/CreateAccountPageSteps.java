@@ -2,6 +2,7 @@ package page.object.steps;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import static page.object.pages.CreateAccountPage.*;
 
@@ -13,6 +14,10 @@ public class CreateAccountPageSteps extends BasePageSteps {
 
     public void inputFirstName(final String keyword){
         driver.findElement(By.xpath(FIRST_NAME_INPUT)).sendKeys(keyword);
+    }
+
+    public By getInputFirstName(){
+        return By.xpath(FIRST_NAME_INPUT);
     }
 
     public void inputLastName(final String keyword){
