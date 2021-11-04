@@ -14,7 +14,7 @@ public class ForgotPasswordPage {
     public static String EXPECTED_SUCCESS_MESSAGE = "A confirmation email has been sent to your address";
 
     public SelenideElement emailInput = $(xpath("//input[@id='email']"));
-    public SelenideElement retrievePasswordButton = $(xpath("//p//button[@type='submit']");
+    public SelenideElement retrievePasswordButton = $(xpath("//p//button[@type='submit']"));
     public SelenideElement message = $(xpath("//p[@class='alert alert-success']"));
 
 

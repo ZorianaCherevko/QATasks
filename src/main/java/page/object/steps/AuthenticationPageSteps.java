@@ -2,28 +2,25 @@ package page.object.steps;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import page.object.pages.AuthenticationPage;
 
 import static page.object.pages.AuthenticationPage.*;
 
 public class AuthenticationPageSteps extends  BasePageSteps{
 
-    public AuthenticationPageSteps(WebDriver driver){
-        super(driver);
-    }
+    public AuthenticationPage authenticationPage = new AuthenticationPage();
 
     public void inputEmailAndClickCreateAccount(final String keyword ){
-        driver.findElement(By.xpath(EMAIL_INPUT)).sendKeys(keyword);
-        driver.findElement(By.xpath(CREATE_ACCOUNT_BUTTON)).click();
+        authenticationPage.emailInput.sendKeys(keyword);
+        authenticationPage.createAccountButton.click();
     }
 
     public By getInputEmail(){
-        return By.xpath(EMAIL_INPUT);
+        return By.xpath(String.valueOf(authenticationPage.emailInput));
     }
 
-
-
     public void clickForgotPassword(){
-        driver.findElement(By.xpath(FORGOT_YOUR_PASSWORD_BUTTON)).click();
+        authenticationPage.forgotYourPasswordButton.click();
     }
 
 
