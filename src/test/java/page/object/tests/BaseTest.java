@@ -1,59 +1,39 @@
 package page.object.tests;
 
+import com.codeborne.selenide.Configuration;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import page.object.steps.*;
 
-import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
+import org.testng.annotations.BeforeSuite;
+
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
-    private WebDriver driver;
+
+    WebDriver driver;
+
     private static final String URL ="http://automationpractice.com/index.php";
 
-    @BeforeTest
+    @BeforeSuite
     public void profileSetUp(){
-
-        chromedriver().setup();
-    }
-
-    @BeforeMethod
-    public void testsSetUp(){
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get(URL);
+        //Configuration.startMaximized = true;
+        open(URL);
     }
 
-    @AfterMethod
-    public void tearDown(){
-        driver.close();
-    }
+    //@AfterMethod
+   // public void tearDown(){
+       /// closeWebDriver();
+    //}
 
-    public WebDriver getDriver(){
-        return driver;
-    }
 
-    public HeaderSteps getHeaderSteps(){
-        return new HeaderSteps(getDriver());
-    }
 
-    public AuthenticationPageSteps getAuthenticationPageSteps(){
-        return new AuthenticationPageSteps(getDriver());
-    }
 
-    public CreateAccountPageSteps getCreateAccountPageSteps(){
-        return new CreateAccountPageSteps(getDriver());
-    }
-
-    public PersonalAccountPageSteps getPersonalAccountPageSteps(){
-        return new PersonalAccountPageSteps(getDriver());
-    }
-
-    public ForgotPasswordPageSteps getForgotPasswordPageSteps(){
-        return new ForgotPasswordPageSteps(getDriver());
-    }
 
 }

@@ -6,7 +6,7 @@ import page.object.pages.AuthenticationPage;
 
 import static page.object.pages.AuthenticationPage.*;
 
-public class AuthenticationPageSteps extends  BasePageSteps{
+public class AuthenticationPageSteps{
 
     public AuthenticationPage authenticationPage = new AuthenticationPage();
 

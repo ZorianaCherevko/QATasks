@@ -7,7 +7,7 @@ import page.object.pages.CreateAccountPage;
 
 import static page.object.pages.CreateAccountPage.*;
 
-public class CreateAccountPageSteps extends BasePageSteps {
+public class CreateAccountPageSteps  {
 
     public CreateAccountPage createAccountPage = new CreateAccountPage();
 

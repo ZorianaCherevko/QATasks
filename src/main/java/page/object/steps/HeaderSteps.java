@@ -6,7 +6,7 @@ import page.object.pages.Header;
 
 import static page.object.pages.Header.*;
 
-public class HeaderSteps extends BasePageSteps  {
+public class HeaderSteps  {
 
 
     public Header header = new Header();

@@ -1,5 +1,6 @@
 package page.object.steps;
 
+import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import page.object.pages.ForgotPasswordPage;
@@ -8,13 +9,14 @@ import static org.openqa.selenium.By.xpath;
 import static page.object.pages.ForgotPasswordPage.*;
 
 
-public class ForgotPasswordPageSteps extends BasePageSteps{
+public class ForgotPasswordPageSteps{
 
     public ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
 
     public void inputEmailAndClickRetrievePassword(final String keyword){
         forgotPasswordPage.emailInput.sendKeys(keyword);
-        forgotPasswordPage.retrievePasswordButton.click();
+        forgotPasswordPage.retrievePasswordButton.shouldBe(Condition.visible).click();
+
     }
 
     public By getMessage(){

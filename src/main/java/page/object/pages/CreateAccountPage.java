@@ -1,5 +1,6 @@
 package page.object.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -18,7 +19,7 @@ public class CreateAccountPage {
     //public static String STATE_SELECTOR = "//select[@name='id_state']";
     //public static String STATE_OPTION = "//select[@name='id_state']/option[text() = 'California']";
 
-    public SelenideElement firstNameInput = $(xpath("//input[@name='customer_firstname']"));
+    public SelenideElement firstNameInput = $(xpath("//input[@name='customer_firstname']")).shouldBe(Condition.visible);
     public SelenideElement lastNameInput = $(xpath("//input[@name='customer_lastname']"));
     public SelenideElement passwordInput = $(xpath("//input[@id='passwd']"));
     public SelenideElement addressInput = $(xpath("//input[@id='address1']"));
