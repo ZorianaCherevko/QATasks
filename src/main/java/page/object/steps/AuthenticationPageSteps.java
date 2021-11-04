@@ -21,4 +21,10 @@ public class AuthenticationPageSteps extends  BasePageSteps{
     }
 
 
+
+    public void clickForgotPassword(){
+        driver.findElement(By.xpath(FORGOT_YOUR_PASSWORD_BUTTON)).click();
+    }
+
+
 }

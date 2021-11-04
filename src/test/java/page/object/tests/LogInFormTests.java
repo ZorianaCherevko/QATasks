@@ -3,11 +3,12 @@ package page.object.tests;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
+import static page.object.pages.ForgotPasswordPage.EXPECTED_SUCCESS_MESSAGE;
 import static page.object.pages.PersonalAccountPage.*;
 import static page.object.user.cred.UserCred.*;
 import static org.testng.Assert.assertEquals;
 
-public class RegisterTests extends  BaseTest {
+public class LogInFormTests extends  BaseTest {
 
     @Test
     public void checkThatRegistrationWithValidCredentialsIsSuccessful(){
@@ -19,6 +20,18 @@ public class RegisterTests extends  BaseTest {
         getCreateAccountPageSteps().clickRegisterButton();
         getPersonalAccountPageSteps().waitForLoadPAgeComplete(30);
         assertTrue(getDriver().getCurrentUrl().contentEquals(PERSONAL_ACCOUNT_URL));
+
+    }
+
+    @Test
+    public void checkThatRetrievePasswordIsSuccessful(){
+        getHeaderSteps().clickSignInButton();
+        getAuthenticationPageSteps().waitForLoadPAgeComplete(20);
+        getAuthenticationPageSteps().clickForgotPassword();
+        getForgotPasswordPageSteps().waitForLoadPAgeComplete(10);
+        getForgotPasswordPageSteps().inputEmailAndClickRetrievePassword(EMAIL);
+        getForgotPasswordPageSteps().waitVisibilityOfElement(20,getForgotPasswordPageSteps().getMessage());
+        assertTrue(getForgotPasswordPageSteps().getTextFromMessage().contains(EXPECTED_SUCCESS_MESSAGE));
 
     }
 }
