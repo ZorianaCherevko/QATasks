@@ -12,49 +12,26 @@ public class CreateAccountPageSteps extends BasePageSteps {
         super(driver);
     }
 
-    public void inputFirstName(final String keyword){
-        driver.findElement(By.xpath(FIRST_NAME_INPUT)).sendKeys(keyword);
+    public void fillInRegisterForm(final String fname,final String lname,final String password,
+                                   final String address, final String city,final int pcode, final int phone){
+        driver.findElement(By.xpath(FIRST_NAME_INPUT)).sendKeys(fname);
+        driver.findElement(By.xpath(LAST_NAME_INPUT)).sendKeys(lname);
+        driver.findElement(By.xpath(PASSWORD_INPUT)).sendKeys(password);
+        driver.findElement(By.xpath(ADDRESS_INPUT)).sendKeys(address);
+        driver.findElement(By.xpath(CITY_INPUT)).sendKeys(city);
+        driver.findElement(By.xpath(POST_CODE_INPUT)).sendKeys(String.valueOf(pcode));
+        driver.findElement(By.xpath(PHONE_INPUT)).sendKeys(String.valueOf(phone));
+        driver.findElement(By.xpath(STATE_SELECTOR)).click();
+        driver.findElement(By.xpath(STATE_OPTION)).click();
     }
 
     public By getInputFirstName(){
         return By.xpath(FIRST_NAME_INPUT);
     }
 
-    public void inputLastName(final String keyword){
-        driver.findElement(By.xpath(LAST_NAME_INPUT)).sendKeys(keyword);
-    }
-
-    public void inputPassword(final String keyword){
-        driver.findElement(By.xpath(PASSWORD_INPUT)).sendKeys(keyword);
-    }
-
-    public void inputAddress(final String keyword){
-        driver.findElement(By.xpath(ADDRESS_INPUT)).sendKeys(keyword);
-    }
-
-    public void inputCity(final String keyword){
-        driver.findElement(By.xpath(CITY_INPUT)).sendKeys(keyword);
-    }
-
-    public void inputPostCode(final int keyword){
-        driver.findElement(By.xpath(POST_CODE_INPUT)).sendKeys(String.valueOf(keyword));
-    }
-
-    public void chooseState(){
-        driver.findElement(By.xpath(STATE_SELECTOR)).click();
-        driver.findElement(By.xpath(STATE_OPTION)).click();
-
-    }
-
     public void clickRegisterButton(){
         driver.findElement(By.xpath(REGISTER_BUTTON)).click();
-
     }
-
-    public void inputPhoneNumber(final int keyword){
-        driver.findElement(By.xpath(PHONE_INPUT)).sendKeys(String.valueOf(keyword));
-    }
-
 
 
 }

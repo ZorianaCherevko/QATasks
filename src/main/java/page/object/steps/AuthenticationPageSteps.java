@@ -11,11 +11,8 @@ public class AuthenticationPageSteps extends  BasePageSteps{
         super(driver);
     }
 
-    public void inputEmail(final String keyword){
+    public void inputEmailAndClickCreateAccount(final String keyword ){
         driver.findElement(By.xpath(EMAIL_INPUT)).sendKeys(keyword);
-    }
-
-    public void clickCreateAccount(){
         driver.findElement(By.xpath(CREATE_ACCOUNT_BUTTON)).click();
     }
 

@@ -13,17 +13,9 @@ public class RegisterTests extends  BaseTest {
     public void checkThatRegistrationWithValidCredentialsIsSuccessful(){
         getHeaderSteps().clickSignInButton();
         getAuthenticationPageSteps().waitVisibilityOfElement(20, getAuthenticationPageSteps().getInputEmail());
-        getAuthenticationPageSteps().inputEmail(EMAIL);
-        getAuthenticationPageSteps().clickCreateAccount();
+        getAuthenticationPageSteps().inputEmailAndClickCreateAccount(EMAIL);
         getCreateAccountPageSteps().waitVisibilityOfElement(20,getCreateAccountPageSteps().getInputFirstName());
-        getCreateAccountPageSteps().inputFirstName(FIRSTNAME);
-        getCreateAccountPageSteps().inputLastName(LASTNAME);
-        getCreateAccountPageSteps().inputPassword(PASSWORD);
-        getCreateAccountPageSteps().inputAddress(ADDRESS);
-        getCreateAccountPageSteps().inputCity(CITY);
-        getCreateAccountPageSteps().inputPostCode(POST_CODE);
-        getCreateAccountPageSteps().inputPhoneNumber(PHONE);
-        getCreateAccountPageSteps().chooseState();
+        getCreateAccountPageSteps().fillInRegisterForm(FIRSTNAME,LASTNAME,PASSWORD,ADDRESS,CITY,POST_CODE,PHONE);
         getCreateAccountPageSteps().clickRegisterButton();
         getPersonalAccountPageSteps().waitForLoadPAgeComplete(30);
         assertTrue(getDriver().getCurrentUrl().contentEquals(PERSONAL_ACCOUNT_URL));

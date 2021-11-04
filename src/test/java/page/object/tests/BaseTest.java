@@ -5,8 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-import page.object.pages.AuthenticationPage;
-import page.object.pages.Header;
 import page.object.steps.AuthenticationPageSteps;
 import page.object.steps.CreateAccountPageSteps;
 import page.object.steps.HeaderSteps;
