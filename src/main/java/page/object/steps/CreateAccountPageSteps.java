@@ -1,11 +1,9 @@
 package page.object.steps;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import page.object.pages.CreateAccountPage;
 
-import static page.object.pages.CreateAccountPage.*;
+
 
 public class CreateAccountPageSteps  {
 
