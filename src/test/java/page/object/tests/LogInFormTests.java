@@ -35,6 +35,5 @@ public class LogInFormTests extends BaseTest {
         getAuthenticationPageSteps.clickForgotPassword();
         getForgotPasswordPageSteps.inputEmailAndClickRetrievePassword(EMAIL);
         assertTrue(getForgotPasswordPageSteps.getTextFromMessage().contains(EXPECTED_SUCCESS_MESSAGE));
-
     }
 }

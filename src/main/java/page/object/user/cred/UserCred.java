@@ -10,7 +10,7 @@ public class UserCred {
     public static int PHONE = getRandomInt();
     public static String FIRSTNAME = getRandomString(8);
     public static String LASTNAME = getRandomString(10);
-    public static String PASSWORD = generateRandomCharSequence(7);
+    public static String PASSWORD = "password";
     public static String ADDRESS = generateRandomCharSequence(10);
     public static String CITY = getRandomString(10);
     public static int POST_CODE = getRandomPostCode();
