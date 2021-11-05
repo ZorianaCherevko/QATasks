@@ -15,23 +15,19 @@ import static com.codeborne.selenide.Selenide.open;
 public class BaseTest {
 
 
-    WebDriver driver;
-
-    private static final String URL ="http://automationpractice.com/index.php";
+   public static final String URL ="http://automationpractice.com/index.php";
 
     @BeforeSuite
     public void profileSetUp(){
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        //Configuration.startMaximized = true;
+        Configuration.startMaximized = true;
         open(URL);
     }
 
-    //@AfterMethod
-   // public void tearDown(){
-       /// closeWebDriver();
-    //}
-
+    @AfterMethod
+    public void tearDown(){
+       closeWebDriver();
+    }
 
 
 
