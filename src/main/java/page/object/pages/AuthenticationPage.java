@@ -8,7 +8,7 @@ import static org.openqa.selenium.By.xpath;
 
 public class AuthenticationPage {
 
-    public SelenideElement emailInput = $(xpath("//input[@id='email_create']")).shouldBe(Condition.visible);
+    public SelenideElement emailInput = $(xpath("//input[@id='email_create']"));
     public SelenideElement createAccountButton = $(xpath("//button[@id='SubmitCreate']"));
     public SelenideElement forgotYourPasswordButton = $(xpath("//a[@title='Recover your forgotten password']"));
 

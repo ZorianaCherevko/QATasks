@@ -1,9 +1,6 @@
 package page.object.steps;
 
-import org.openqa.selenium.By;
 import page.object.pages.CreateAccountPage;
-
-
 
 public class CreateAccountPageSteps  {
 
@@ -20,10 +17,6 @@ public class CreateAccountPageSteps  {
         createAccountPage.phoneInput.sendKeys(String.valueOf(phone));
         createAccountPage.stateSelector.click();
         createAccountPage.stateOption.click();
-    }
-
-    public By getInputFirstName(){
-        return By.xpath(String.valueOf(createAccountPage.firstNameInput));
     }
 
     public void clickRegisterButton(){

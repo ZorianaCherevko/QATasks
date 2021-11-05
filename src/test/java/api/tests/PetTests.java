@@ -1,6 +1,6 @@
 package api.tests;
 
-import api.tests.BaseTests;
+import utils.BaseTests;
 import io.restassured.response.Response;
 import jdk.jfr.Description;
 import lombok.SneakyThrows;

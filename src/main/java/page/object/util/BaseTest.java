@@ -1,9 +1,7 @@
-package page.object.tests;
+package page.object.util;
 
 import com.codeborne.selenide.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 
 import org.testng.annotations.BeforeSuite;
@@ -16,7 +14,7 @@ public class BaseTest {
     private static final String URL ="http://automationpractice.com/index.php";
 
     @BeforeSuite
-    public void profileSetUp(){
+    public static void profileSetUp(){
         WebDriverManager.chromedriver().setup();
         Configuration.startMaximized = true;
         open(URL);
