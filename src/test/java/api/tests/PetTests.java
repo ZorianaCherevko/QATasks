@@ -7,9 +7,9 @@ import lombok.SneakyThrows;
 import steps.GenStep;
 import steps.PetSteps;
 import org.testng.annotations.Test;
-
+import static consts.HttpCodes.*;
+import static consts.Keys.*;
 import static test.Cred.TestCred.*;
-
 import static org.testng.Assert.assertEquals;
 public class PetTests extends BaseTests {
 
@@ -17,13 +17,12 @@ public class PetTests extends BaseTests {
     private final PetSteps petSteps = new PetSteps();
     private final GenStep genStep = new GenStep();
 
-
     @Test
     @Description("POST /v2/pet")
     public void checkThatCreatePetWithValidDataReturns200(){
         assertEquals(petSteps.addNewPetToStore(PET_ID, PET_NAME,PET_PHOTO,
                 PET_CATEGORY_ID, PET_CATEGORY_NAME,PET_TAG_ID,
-                PET_TAG_NAME,PET_STATUS).getStatusCode(),200);
+                PET_TAG_NAME,PET_STATUS).getStatusCode(),OK);
     }
 
     @Test
@@ -31,7 +30,7 @@ public class PetTests extends BaseTests {
     public void checkThatUpdatePetReturns200(){
         assertEquals(petSteps.updatePetStatus(PET_ID, PET_NAME,PET_PHOTO,
                 PET_CATEGORY_ID, PET_CATEGORY_NAME,PET_TAG_ID,
-                PET_TAG_NAME,UPDATED_PET_STATUS).getStatusCode(),200);
+                PET_TAG_NAME,UPDATED_PET_STATUS).getStatusCode(),OK);
     }
 
     @Test
@@ -43,7 +42,7 @@ public class PetTests extends BaseTests {
     @Test
     @Description("DELETE /v2/pet/{id}")
     public void checkThatDeletePetByIdReturns200(){
-        assertEquals(petSteps.deleteInfoByPetId(PET_ID).getStatusCode(),200);
+        assertEquals(petSteps.deleteInfoByPetId(PET_ID).getStatusCode(),OK);
     }
 
 
@@ -53,23 +52,22 @@ public class PetTests extends BaseTests {
         Response postResponse =petSteps.addNewPetToStore(PET_ID, PET_NAME,PET_PHOTO,
                 PET_CATEGORY_ID, PET_CATEGORY_NAME,PET_TAG_ID,
                 PET_TAG_NAME,PET_STATUS);
-
-        assertEquals(genStep.getBodyValueInt(postResponse,"/id"),PET_ID);
-        assertEquals(genStep.getBodyValue(postResponse,"/name"),PET_NAME);
-        assertEquals(genStep.getBodyValueInt(postResponse,"/category/id"),PET_CATEGORY_ID);
-        assertEquals(genStep.getBodyValue(postResponse,"/category/name"),PET_CATEGORY_NAME);
-        assertEquals(genStep.getBodyValue(postResponse,"/photoUrls/0"),PET_PHOTO);
-        assertEquals(genStep.getBodyValueInt(postResponse,"/tags/0/id"),PET_TAG_ID);
-        assertEquals(genStep.getBodyValue(postResponse,"/tags/0/name"),PET_TAG_NAME);
+        assertEquals(genStep.getBodyValueInt(postResponse,ID_KEY),PET_ID);
+        assertEquals(genStep.getBodyValue(postResponse,NAME_KEY),PET_NAME);
+        assertEquals(genStep.getBodyValueInt(postResponse,CATEGORY_KEY + ID_KEY),PET_CATEGORY_ID);
+        assertEquals(genStep.getBodyValue(postResponse,CATEGORY_KEY + NAME_KEY),PET_CATEGORY_NAME);
+        assertEquals(genStep.getBodyValue(postResponse,PHOTO_URLS_KEY + "/0"),PET_PHOTO);
+        assertEquals(genStep.getBodyValueInt(postResponse,TAGS_KEY + "/0" + ID_KEY),PET_TAG_ID);
+        assertEquals(genStep.getBodyValue(postResponse,TAGS_KEY + "/0" + NAME_KEY),PET_TAG_NAME);
 
         Response putResponse = petSteps.updatePetStatus(PET_ID, PET_NAME,PET_PHOTO,
                 PET_CATEGORY_ID, PET_CATEGORY_NAME,PET_TAG_ID,
                 PET_TAG_NAME,UPDATED_PET_STATUS);
-        assertEquals(genStep.getBodyValue(putResponse, "/status"), UPDATED_PET_STATUS.toString());
+        assertEquals(genStep.getBodyValue(putResponse, STATUS_KEY), UPDATED_PET_STATUS.toString());
 
-        assertEquals(petSteps.getInfoByPetId(PET_ID).getStatusCode(),200);
+        assertEquals(petSteps.getInfoByPetId(PET_ID).getStatusCode(),OK);
 
-        assertEquals(petSteps.deleteInfoByPetId(PET_ID).getStatusCode(),200);
+        assertEquals(petSteps.deleteInfoByPetId(PET_ID).getStatusCode(),OK);
     }
 
 
