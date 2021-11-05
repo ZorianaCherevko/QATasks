@@ -20,10 +20,10 @@ public class BaseTest {
         open(URL);
     }
 
-    //@AfterMethod
-    //public void tearDown(){
-        //closeWebDriver();
-    //}
+    @AfterMethod
+    public void tearDown(){
+        closeWebDriver();
+    }
 
 
 
