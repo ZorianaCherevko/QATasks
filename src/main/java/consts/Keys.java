@@ -7,4 +7,6 @@ public class Keys {
     public static final String CATEGORY_KEY = "/category";
     public static final String PHOTO_URLS_KEY = "/photoUrls";
     public static final String TAGS_KEY = "/tags";
+    public static final String STATUS_KEY = "/status";
+
 }
