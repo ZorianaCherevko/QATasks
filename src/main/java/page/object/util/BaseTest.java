@@ -14,16 +14,16 @@ public class BaseTest {
     private static final String URL ="http://automationpractice.com/index.php";
 
     @BeforeSuite
-    public static void profileSetUp(){
+    public void profileSetUp(){
         WebDriverManager.chromedriver().setup();
         Configuration.startMaximized = true;
         open(URL);
     }
 
-    @AfterMethod
-    public void tearDown(){
-        closeWebDriver();
-    }
+    //@AfterMethod
+    //public void tearDown(){
+        //closeWebDriver();
+    //}
 
 
 
