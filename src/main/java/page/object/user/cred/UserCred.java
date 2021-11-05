@@ -1,12 +1,8 @@
 package page.object.user.cred;
 
-
 import org.apache.commons.lang3.RandomStringUtils;
-
 import java.security.SecureRandom;
-import java.sql.Timestamp;
 import java.util.Random;
-import java.util.TimeZone;
 
 public class UserCred {
 
