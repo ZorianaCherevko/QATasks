@@ -1,4 +1,4 @@
-package enpoints;
+package consts;
 
 public class Endpoints {
 

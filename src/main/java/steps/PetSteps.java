@@ -9,7 +9,7 @@ import lombok.SneakyThrows;
 import utils.ApiUtils;
 import utils.BuilderUtil;
 
-import static enpoints.Endpoints.*;
+import static consts.Endpoints.*;
 
 public class PetSteps {
 
