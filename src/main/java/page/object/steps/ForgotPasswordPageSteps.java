@@ -10,7 +10,7 @@ public class ForgotPasswordPageSteps{
 
     public void inputEmailAndClickRetrievePassword(final String keyword){
         forgotPasswordPage.emailInput.sendKeys(keyword);
-        forgotPasswordPage.retrievePasswordButton.shouldBe(Condition.visible).click();
+        forgotPasswordPage.retrievePasswordButton.click();
     }
 
     public By getMessage(){

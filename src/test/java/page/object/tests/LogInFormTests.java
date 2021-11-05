@@ -26,14 +26,14 @@ public class LogInFormTests extends BaseTest {
         getAuthenticationPageSteps.inputEmailAndClickCreateAccount(EMAIL);
         getCreateAccountPageSteps.fillInRegisterForm(FIRSTNAME,LASTNAME,PASSWORD,ADDRESS,CITY,POST_CODE,PHONE);
         getCreateAccountPageSteps.clickRegisterButton();
-        assertEquals(getWebDriver().getCurrentUrl(), PERSONAL_ACCOUNT_URL);
+        assertEquals(getWebDriver().getCurrentUrl(),PERSONAL_ACCOUNT_URL);
     }
 
     @Test
     public void checkThatRetrievePasswordIsSuccessful(){
         getHeaderSteps.clickSignInButton();
         getAuthenticationPageSteps.clickForgotPassword();
-        getForgotPasswordPageSteps.inputEmailAndClickRetrievePassword(EMAIL);
+        getForgotPasswordPageSteps.inputEmailAndClickRetrievePassword(REGISTERED_EMAIL);
         assertTrue(getForgotPasswordPageSteps.getTextFromMessage().contains(EXPECTED_SUCCESS_MESSAGE));
     }
 }

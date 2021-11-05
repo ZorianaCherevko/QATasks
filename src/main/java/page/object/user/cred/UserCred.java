@@ -1,5 +1,6 @@
 package page.object.user.cred;
 
+
 import org.apache.commons.lang3.RandomStringUtils;
 import java.security.SecureRandom;
 import java.util.Random;
@@ -7,10 +8,11 @@ import java.util.Random;
 public class UserCred {
 
     public static String EMAIL = "email678+" + System.nanoTime() +"@gmail.com";
+    public static String REGISTERED_EMAIL = "email678@gmail.com";
     public static int PHONE = getRandomInt();
     public static String FIRSTNAME = getRandomString(8);
     public static String LASTNAME = getRandomString(10);
-    public static String PASSWORD = "password";
+    public static String PASSWORD = generateRandomCharSequence(7);
     public static String ADDRESS = generateRandomCharSequence(10);
     public static String CITY = getRandomString(10);
     public static int POST_CODE = getRandomPostCode();
