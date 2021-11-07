@@ -21,7 +21,5 @@ public class TestCred {
     public static int ORDER_QUANTITY = 3;
     public static Date ORDER_SHIP_DATE = new Date();
     public static OrderStatus ORDER_STATUS = OrderStatus.placed;
-    public static boolean complete;
-
 
 }

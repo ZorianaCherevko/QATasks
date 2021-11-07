@@ -1,5 +1,6 @@
 package api.tests;
 
+import steps.OrderSteps;
 import utils.BaseTests;
 import io.restassured.response.Response;
 import jdk.jfr.Description;
@@ -16,6 +17,7 @@ public class PetTests extends BaseTests {
 
     private final PetSteps petSteps = new PetSteps();
     private final GenStep genStep = new GenStep();
+    private final OrderSteps orderSteps = new OrderSteps();
 
     @Test
     @Description("POST /v2/pet")
@@ -68,6 +70,14 @@ public class PetTests extends BaseTests {
         assertEquals(petSteps.getInfoByPetId(PET_ID).getStatusCode(),OK);
 
         assertEquals(petSteps.deleteInfoByPetId(PET_ID).getStatusCode(),OK);
+    }
+
+    @Test
+    @Description("CREATE /v2/store/order")
+    public void checkThatCreateOrderWithValidDataReturns200(){
+        assertEquals(orderSteps.addNewOrderToStore(ORDER_ID, PET_ID, ORDER_QUANTITY, ORDER_SHIP_DATE,
+                ORDER_STATUS, true).getStatusCode(), OK);
+
     }
 
 
