@@ -19,4 +19,5 @@ public class CreateAccountPage {
     public SelenideElement stateOption = $(xpath("//select[@name='id_state']/option[text() = 'California']"));
 
 
+
 }
