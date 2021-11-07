@@ -34,10 +34,10 @@ public class BuilderUtil {
                 .build();
     }
 
-    public Order buildOrder(int orderId, int petId, int quantity, String shipDate,
+    public Order buildOrder(int id, int petId, int quantity, String shipDate,
                             OrderStatus orderStatus, boolean complete){
         return Order.builder()
-                .id(orderId)
+                .id(id)
                 .petId(petId)
                 .quantity(quantity)
                 .shipDate(shipDate)

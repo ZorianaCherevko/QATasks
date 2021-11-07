@@ -20,7 +20,7 @@ public class TestCred {
     public static Status UPDATED_PET_STATUS = Status.sold;
 
     //order
-    public static int ORDER_ID = 25;
+    public static int ORDER_ID = 5;
     public static int ORDER_QUANTITY = 3;
     public static String ORDER_SHIP_DATE = getDateAndTime();
     public static OrderStatus ORDER_STATUS = OrderStatus.placed;

@@ -4,12 +4,13 @@ import jdk.jfr.Description;
 import org.testng.annotations.Test;
 import steps.GenStep;
 import steps.OrderSteps;
+import utils.BaseTests;
 
 import static consts.HttpCodes.OK;
 import static org.testng.Assert.assertEquals;
 import static test.Cred.TestCred.*;
 
-public class OrderTests {
+public class OrderTests extends BaseTests {
 
     private final OrderSteps orderSteps = new OrderSteps();
     private final GenStep genStep = new GenStep();
@@ -23,7 +24,7 @@ public class OrderTests {
     }
 
     @Test
-    @Description("/v2/store/order/{orderId}")
+    @Description("GET /v2/store/order/{orderId}")
     public void checkThatGetOrderByIdReturns200(){
         assertEquals(orderSteps.getInfoByOrderId(ORDER_ID).getStatusCode(), OK);
     }

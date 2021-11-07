@@ -5,7 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-import static consts.PathParam.ID_PATH;
+import static consts.PathParam.*;
 
 public class ApiUtils {
 
@@ -50,6 +50,17 @@ public class ApiUtils {
         requestSpec.log().all();
 
         Response resp = requestSpec.delete(endpoint);
+        return resp;
+    }
+
+    public static Response getOrder(String endpoint, Integer id){
+        RequestSpecification requestSpec = RestAssured.given();
+        requestSpec.contentType(ContentType.JSON);
+        requestSpec.accept(ContentType.JSON);
+        requestSpec.pathParam(ORDER_ID_PATH, id);
+        requestSpec.log().all();
+
+        Response resp = requestSpec.get(endpoint);
         return resp;
     }
 

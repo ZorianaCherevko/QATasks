@@ -18,9 +18,9 @@ public class OrderSteps {
 
     @SneakyThrows
     @Step("Add a new order to store")
-    public Response addNewOrderToStore(int orderId, int petId, int quantity, String shipDate,
+    public Response addNewOrderToStore(int id, int petId, int quantity, String shipDate,
                                        OrderStatus orderStatus, boolean complete) {
-        Order order = builderUtil.buildOrder(orderId, petId, quantity, shipDate, orderStatus, complete);
+        Order order = builderUtil.buildOrder(id, petId, quantity, shipDate, orderStatus, complete);
 
         return post(CREATE_AN_ORDER, objectMapper.writeValueAsString(order));
     }
@@ -28,6 +28,6 @@ public class OrderSteps {
     @SneakyThrows
     @Step("Get an order info")
     public Response getInfoByOrderId(int orderId){
-        return get(GET_AN_ORDER, orderId);
+        return getOrder(GET_AN_ORDER, orderId);
     }
 }
