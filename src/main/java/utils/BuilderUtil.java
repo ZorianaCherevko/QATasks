@@ -1,9 +1,8 @@
 package utils;
 
-import builders.Category;
-import builders.Pet;
-import builders.Status;
-import builders.Tag;
+import builders.*;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -35,6 +34,19 @@ public class BuilderUtil {
                 .id(tagId)
                 .name(tagName)
                 .build();
+    }
+
+    public Order buildOrder(int orderId, int petId, int quantity, Date shipDate,
+                            OrderStatus orderStatus, boolean complete){
+        return Order.builder()
+                .id(orderId)
+                .petId(petId)
+                .quantity(quantity)
+                .shipDate(shipDate)
+                .orderStatus(orderStatus)
+                .complete(complete)
+                .build();
+
     }
 
 
