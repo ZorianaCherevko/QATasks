@@ -1,8 +1,6 @@
 package utils;
 
 import builders.*;
-
-import java.util.Date;
 import java.util.List;
 
 
@@ -36,7 +34,7 @@ public class BuilderUtil {
                 .build();
     }
 
-    public Order buildOrder(int orderId, int petId, int quantity, Date shipDate,
+    public Order buildOrder(int orderId, int petId, int quantity, String shipDate,
                             OrderStatus orderStatus, boolean complete){
         return Order.builder()
                 .id(orderId)

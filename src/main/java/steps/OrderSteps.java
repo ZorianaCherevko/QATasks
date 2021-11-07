@@ -10,8 +10,6 @@ import utils.ApiUtils;
 import utils.BuilderUtil;
 import static consts.Endpoints.*;
 
-import java.util.Date;
-
 public class OrderSteps {
 
     private final BuilderUtil builderUtil = new BuilderUtil();
@@ -19,7 +17,7 @@ public class OrderSteps {
 
     @SneakyThrows
     @Step("Add a new order to store")
-    public Response addNewOrderToStore(int orderId, int petId, int quantity, Date shipDate,
+    public Response addNewOrderToStore(int orderId, int petId, int quantity, String shipDate,
                                        OrderStatus orderStatus, boolean complete) {
         Order order = builderUtil.buildOrder(orderId, petId, quantity, shipDate, orderStatus, complete);
 
