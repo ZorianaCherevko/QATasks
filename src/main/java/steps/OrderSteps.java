@@ -8,6 +8,8 @@ import io.restassured.response.Response;
 import lombok.SneakyThrows;
 
 import static utils.ApiUtils.*;
+
+import utils.ApiUtils;
 import utils.BuilderUtil;
 import static consts.Endpoints.*;
 
@@ -29,5 +31,11 @@ public class OrderSteps {
     @Step("Get an order info")
     public Response getInfoByOrderId(int orderId){
         return getOrder(GET_AN_ORDER, orderId);
+    }
+
+    @SneakyThrows
+    @Step ("Delete an order info")
+    public Response deleteInfoByOrderId(int id){
+        return deleteOrder(DELETE_AN_ORDER, id);
     }
 }

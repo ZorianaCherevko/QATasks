@@ -64,5 +64,16 @@ public class ApiUtils {
         return resp;
     }
 
+    public static Response deleteOrder(String endpoint, Integer id){
+        RequestSpecification requestSpec = RestAssured.given();
+        requestSpec.contentType(ContentType.JSON);
+        requestSpec.accept(ContentType.JSON);
+        requestSpec.pathParam(ORDER_ID_PATH, id );
+        requestSpec.log().all();
+
+        Response resp = requestSpec.delete(endpoint);
+        return resp;
+    }
+
 
 }
